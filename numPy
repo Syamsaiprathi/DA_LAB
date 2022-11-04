@@ -1,0 +1,181 @@
+1.	Write a NumPy program to get the numpy version and show numpy build configuration.
+
+import numpy as np
+print("The version of numpy is:",np.__version__)
+print("The configuraton of numpy is:", np.show_config())
+
+The version of numpy is: 1.20.3
+blas_mkl_info:
+    libraries = ['mkl_rt']
+    library_dirs = ['C:/ProgramData/Anaconda3\\Library\\lib']
+    define_macros = [('SCIPY_MKL_H', None), ('HAVE_CBLAS', None)]
+    include_dirs = ['C:/ProgramData/Anaconda3\\Library\\include']
+blas_opt_info:
+    libraries = ['mkl_rt']
+    library_dirs = ['C:/ProgramData/Anaconda3\\Library\\lib']
+    define_macros = [('SCIPY_MKL_H', None), ('HAVE_CBLAS', None)]
+    include_dirs = ['C:/ProgramData/Anaconda3\\Library\\include']
+lapack_mkl_info:
+    libraries = ['mkl_rt']
+    library_dirs = ['C:/ProgramData/Anaconda3\\Library\\lib']
+    define_macros = [('SCIPY_MKL_H', None), ('HAVE_CBLAS', None)]
+    include_dirs = ['C:/ProgramData/Anaconda3\\Library\\include']
+lapack_opt_info:
+    libraries = ['mkl_rt']
+    library_dirs = ['C:/ProgramData/Anaconda3\\Library\\lib']
+    define_macros = [('SCIPY_MKL_H', None), ('HAVE_CBLAS', None)]
+    include_dirs = ['C:/ProgramData/Anaconda3\\Library\\include']
+The configuraton of numpy is: None
+
+
+2.	Write a NumPy program to get help on the add function.
+
+print(np.info(np.add))
+
+add(x1, x2, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True[, signature, extobj])
+
+Add arguments element-wise.
+
+Parameters
+----------
+x1, x2 : array_like
+    The arrays to be added.
+    If ``x1.shape != x2.shape``, they must be broadcastable to a common
+    shape (which becomes the shape of the output).
+out : ndarray, None, or tuple of ndarray and None, optional
+    A location into which the result is stored. If provided, it must have
+    a shape that the inputs broadcast to. If not provided or None,
+    a freshly-allocated array is returned. A tuple (possible only as a
+    keyword argument) must have length equal to the number of outputs.
+where : array_like, optional
+    This condition is broadcast over the input. At locations where the
+    condition is True, the `out` array will be set to the ufunc result.
+    Elsewhere, the `out` array will retain its original value.
+    Note that if an uninitialized `out` array is created via the default
+    ``out=None``, locations within it where the condition is False will
+    remain uninitialized.
+**kwargs
+    For other keyword-only arguments, see the
+    :ref:`ufunc docs <ufuncs.kwargs>`.
+
+Returns
+-------
+add : ndarray or scalar
+    The sum of `x1` and `x2`, element-wise.
+    This is a scalar if both `x1` and `x2` are scalars.
+
+Notes
+-----
+Equivalent to `x1` + `x2` in terms of array broadcasting.
+
+Examples
+--------
+>>> np.add(1.0, 4.0)
+5.0
+>>> x1 = np.arange(9.0).reshape((3, 3))
+>>> x2 = np.arange(3.0)
+>>> np.add(x1, x2)
+array([[  0.,   2.,   4.],
+       [  3.,   5.,   7.],
+       [  6.,   8.,  10.]])
+
+The ``+`` operator can be used as a shorthand for ``np.add`` on ndarrays.
+
+>>> x1 = np.arange(9.0).reshape((3, 3))
+>>> x2 = np.arange(3.0)
+>>> x1 + x2
+array([[ 0.,  2.,  4.],
+       [ 3.,  5.,  7.],
+       [ 6.,  8., 10.]])
+None
+
+3.	Write a NumPy program to test whether none of the elements of a given array is zero.
+
+l1=list(map(int, input().split()))
+print("Returns true if none of elements are zero else return false:", np.all(l1))
+
+1 2 3 4
+Returns true if none of elements are zero else return false: True
+
+l1=list(map(int, input().split()))
+print("Returns true if none of elements are zero else return false:", np.all(l1))
+
+1 2 3 0
+Returns true if none of elements are zero else return false: False
+
+4.	Write a NumPy program to create an array of 10 zeros, 10 ones, 10 fives.
+
+print(np.ones(10))
+
+[1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+
+print(np.zeros(10))
+
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+
+print((np.ones(10))*5)
+
+[5. 5. 5. 5. 5. 5. 5. 5. 5. 5.]
+
+5.	Write a NumPy program to create an array of all the even integers from 30 to 70.
+
+print(np.arange(30,71,2))
+
+[30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70]
+
+6.	Write a NumPy program to create a 3x3 identity matrix.
+
+print(np.identity(3))
+
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+ 
+7.	Write a NumPy program to create a vector with values from 0 to 20 and change the sign of the numbers in the range from 9 to 15.
+
+x=np.arange(0,21)
+print("Before changing: ", x)
+x[(x>8) & (x<16)]*=-1
+print("After changing:", x)
+
+Before changing:  [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20]
+After changing: [  0   1   2   3   4   5   6   7   8  -9 -10 -11 -12 -13 -14 -15  16  17
+  18  19  20]
+8.	Write a NumPy program to find the number of rows and columns of a given matrix.
+
+x=np.arange(0,20).reshape(5,4)
+print("The shape of given input is:", x.shape)
+
+The shape of given input is: (5, 4)
+
+9.	Write a NumPy program to create a 10x10 matrix, in which the elements on the borders will be equal to 1, and inside 0.
+
+x=np.ones((10,10))
+x[1:-1, 1:-1]=0
+x
+
+array([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+       [1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]])
+       
+       
+10.	Write a NumPy program to compute sum of all elements, sum of each column and sum of each row of a given array.
+
+
+11.	Write a NumPy program to convert a given list into an array, then again convert it into a list. Check initial list and final list are equal or not.
+12.	Write a NumPy program to create a 3x3x3 array filled with arbitrary values.
+13.	Write a NumPy program to create a 5x5 zero matrix with elements on the main diagonal equal to 1, 2, 3, 4, 5.
+14.	Write a NumPy program to extract all numbers from a given array which are less and greater than a specified number.
+15.	Write a NumPy program to compute the sum of the diagonal element of a given array.
+16.	Get the common items between two arrays.
+a = np.array([1,2,3,2,3,4,3,4,5,6])
+b = np.array([7,2,10,2,7,4,9,4,9,8])
+Desired Output:
+array([2, 4])

@@ -168,14 +168,90 @@ array([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1.],
        
 10.	Write a NumPy program to compute sum of all elements, sum of each column and sum of each row of a given array.
 
+import numpy as np
+a=np.arange(1, 21).reshape(4,5)
+b=np.sum(a, axis=0)
+c=np.sum(a, axis=1)
+print("Sum of elements in row wise:", c)
+print("Sum of elements in column wise:", b)
+
+Sum of elements in row wise: [15 40 65 90]
+Sum of elements in column wise: [34 38 42 46 50]
 
 11.	Write a NumPy program to convert a given list into an array, then again convert it into a list. Check initial list and final list are equal or not.
+
+a=list(map(int, input().split()))
+x=np.array(a)
+b=x.tolist()
+if(a == b):
+    print("Given initial list and final list are same")
+else:
+    print("Given initial list and final list are not same")
+    
+1 2 4 7
+Given initial list and final list are same
+
 12.	Write a NumPy program to create a 3x3x3 array filled with arbitrary values.
+
+a=np.random.rand(3, 3, 3)
+print("The 3d array is:\n", a)
+
+The 3d array is:
+ [[[0.65656636 0.89815528 0.50121563]
+  [0.33030856 0.99864505 0.62958907]
+  [0.10923178 0.72822936 0.92428547]]
+
+ [[0.34322642 0.2355005  0.29251866]
+  [0.31660567 0.65855726 0.03542379]
+  [0.92278858 0.26271559 0.13906188]]
+
+ [[0.98011409 0.72240403 0.22418725]
+  [0.17725102 0.30455145 0.46093667]
+  [0.96066913 0.02494343 0.44579648]]]
+  
 13.	Write a NumPy program to create a 5x5 zero matrix with elements on the main diagonal equal to 1, 2, 3, 4, 5.
+
+p=np.diag([1,2,3,4,5])
+p
+
+array([[1, 0, 0, 0, 0],
+       [0, 2, 0, 0, 0],
+       [0, 0, 3, 0, 0],
+       [0, 0, 0, 4, 0],
+       [0, 0, 0, 0, 5]])
+       
 14.	Write a NumPy program to extract all numbers from a given array which are less and greater than a specified number.
+
+a=np.arange(1,16).reshape(3,5)
+b=int(input("Enter number to retrieve numbers lessthan input:"))
+print(a[a < b])
+c=int(input("Enter number to retrieve numbers greaterthan input:"))
+print(a[a > c])
+
+Enter number to retrieve numbers lessthan input:7
+[1 2 3 4 5 6]
+Enter number to retrieve numbers greaterthan input:9
+[10 11 12 13 14 15]
+
 15.	Write a NumPy program to compute the sum of the diagonal element of a given array.
+
+a=np.arange(1,26).reshape(5,5)
+b=np.trace(a)
+print("The trace of matrix is:", b)
+
+The trace of matrix is: 65
+
 16.	Get the common items between two arrays.
 a = np.array([1,2,3,2,3,4,3,4,5,6])
 b = np.array([7,2,10,2,7,4,9,4,9,8])
 Desired Output:
 array([2, 4])
+
+a=list(map(int, input().split()))
+b=list(map(int, input().split()))
+c=np.intersect1d(a,b)
+print("The common elements between 2 lists is:", c)
+
+1 2 3 2 3 4 3 4 5 6
+7 2 10 2 7 4 9 4 9 8
+The common elements between 2 lists is: [2 4]

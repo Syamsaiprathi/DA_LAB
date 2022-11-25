@@ -1,0 +1,90 @@
+Step 1: Data exploration
+
+import pandas as pd
+data = {'Name': ['Jai', 'Princi', 'Gaurav','Anuj', 'Ravi', 
+                  'Natasha', 'Riya'],
+               'Age': [17, 17, 18, 17, 18, 17, 17],
+             'Gender': ['M', 'F', 'M', 'M', 'M', 'F', 'F'],
+        'Marks': [90, 76, 'NaN', 74, 65, 'NaN', 71]}
+        
+df=pd.DataFrame(data)
+df
+
+
+
+  Name	  Age	 Gender	Marks
+0	Jai	    17	 M	    90
+1	Princi	17	 F	    76
+2	Gaurav	18	 M	    NaN
+3	Anuj	  17	 M	    74
+4	Ravi	  18	 M	    65
+5	Natasha	17	 F	    NaN
+6	Riya	  17	 F	    71
+
+Step 2: Dealing with missing values
+As we can see from the previous output, there are NaN values present in the MARKS column which are going to be taken care of by replacing them with the column mean.
+
+
+
+c=avg=0
+for ele in df['Marks']:
+    if str(ele).isnumeric():
+        c+=1
+        avg+=ele
+avg/=c
+        
+avg
+
+75.2
+
+df=df.replace(to_replace="NaN", value=avg)
+df
+
+  Name	  Age	 Gender	Marks
+0	Jai	    17	 M	    90.0
+1	Princi	17	 F	    76.0
+2	Gaurav	18	 M	    75.2
+3	Anuj	  17	 M	    74.0
+4	Ravi	  18	 M	    65.0
+5	Natasha	17	 F	    75.0
+6	Riya	  17	 F	    71.0
+
+
+Step 3: Reshaping data
+in the GENDER column, we can reshape the data by categorizing them into different numbers.
+
+df['Gender']=df['Gender'].map({'M':0, 'F':1}).astype(float)
+df
+
+  Name	  Age	 Gender	Marks
+0	Jai	    17	 0.0	  90.0
+1	Princi	17	 1.0    76.0
+2	Gaurav	18	 0.0    75.2
+3	Anuj	  17	 0.0    74.0
+4	Ravi	  18	 0.0    65.0
+5	Natasha	17	 1.0    75.0
+6	Riya	  17	 1.0    71.0
+
+Step 4: Filtering data, suppose there is a requirement for the details regarding name, gender, marks of the top-scoring students. 
+Here we need to remove some unwanted data.
+
+top=df[df['Marks'] > 75]
+top
+
+	Name	  Age	Gender	Marks
+0	Jai	    17	0.0	    90.0
+1	Princi	17	1.0	    76.0
+2	Gaurav	18	0.0	    75.2
+5	Natasha	17	1.0	    75.2
+
+remoage=df.drop('Age',axis=1)
+remoage
+
+  Name	  	 Gender	Marks
+0	Jai	    	 0.0	  90.0
+1	Princi		 1.0    76.0
+2	Gaurav		 0.0    75.2
+3	Anuj	  	 0.0    74.0
+4	Ravi	  	 0.0    65.0
+5	Natasha		 1.0    75.0
+6	Riya	  	 1.0    71.0

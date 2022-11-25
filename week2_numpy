@@ -1,0 +1,89 @@
+NumPY
+1.	Down load the dataset winequality-red.csv file( each column is separated by a semicolon (;)) from the UCI Machine Learning Repository
+2.	Convert it to numPy array, name it as wines (leave the first row of the list) and specify the data type of array as float.
+3.	Identify the shape of the array.
+4.	Display the element at row 3 and column 4.
+5.	 Display the first three items from the fourth column.
+6.	Display third column from each row.
+7.	Display fourth row.
+8.	Assign value 10 to 2nd row and 6th column element.
+9.	Take the 10th column from wines array and name that slice as slice_new and assign value 666 to all elements of slice_new.
+10.	Display wines array.
+11.	Find the data type of wines array and Change the data type to int.
+12.	Add 10 points to each quality score.
+13.	Find the sum of all the elements in an array
+14.	Find the sum of all the values in every column.
+15.	Find the sum of all the values in every row.
+16.	Add the quality column to itself.
+17.	Multiply alcohol by quality.
+18.	Display which wines have a quality rating higher than 5.
+19.	Check if any wines have a quality rating equal to 10.
+20.	Select rows in wines where the quality is over 7
+21.	Display wines with alcohol greater than 10 and quality greater than 7.
+22.	Change the shape of wines array.
+
+
+
+
+
+
+import pandas as pd
+import numpy as np
+wines=np.genfromtxt(r"winequality-red.csv",delimiter=";",skip_header=1,dtype=float)
+print(wines)
+print(wines.shape,"is the number of row and cols")
+print(wines[4][5],"is the elemnt in row 3 and col 4")
+#5
+for i in range(3):
+  print(wines[i][5])
+#6
+rows,cols=wines.shape
+print(wines[:][4])
+print()
+#7
+print(wines[5][:])
+#8
+wines[3][7]=10
+#11
+print(wines.dtype)
+wines=wines.astype(int)
+print(wines.dtype)
+#12
+wines[:][11]=wines[:][11]+10
+#13
+print(np.sum(wines))
+#14
+print(np.sum(wines,axis=0))
+#15
+print(np.sum(wines,axis=1))
+#16
+wines[:][11]=wines[:][11]+wines[:][11]
+#`17
+wines[:][10]=wines[:][10]*wines[:][11]
+#18
+for i in range(rows):
+  if(wines[i][11]>5):
+    print(wines[i][10],end=" ")
+print()
+#20
+for i in range(rows):
+  if(wines[i][11]>7):
+    #print(wines[i][:],end=" ")
+    print()
+#19
+for i in range(rows):
+  if(wines[i][11]==10):
+    print(wines[i][:],end=" ")
+    print()
+#21
+for i in range(rows):
+  if(wines[i][10]>10 and wines[i][11]>7):
+    #print(wines[i][:],end=" ")
+    print()
+#22
+wines.reshape((12,1599))
+#9
+slice_new=wines[:][10]
+slice_new[:]=666
+print(slice_new)
+print(wines[:][10])
